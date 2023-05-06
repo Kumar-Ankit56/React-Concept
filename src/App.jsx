@@ -1,33 +1,28 @@
-/* eslint-disable react/prop-types */
-/* Functional component with props */
-//import { useEffect, useState } from "react";
-import "./App.css";
-//Array of object
-const profile = [
-  { Name: "Ak", skills: "FullStack Developer" },
-  {
-    Name: "PK",
-    skills: "Frontend Developer",
-  },
-];
-function Home(props) {
-  console.log("Home function", props);
-  return (
-    <>
-      {props.Userpropfile.map((student) => {
-        return (
-          <div key={student.key}>
-            <p>{student.Name}</p> <p>{student.skills}</p>
-          </div>
-        );
-      })}
-    </>
-  );
+import { Route, BrowserRouter, NavLink, Routes } from "react-router-dom";
+
+function Home() {
+  return <>Home</>;
+}
+function About() {
+  return <>About Ankit</>;
+}
+function Contact() {
+  return <>Contact</>;
 }
 function App() {
   return (
     <>
-      <Home Userpropfile={profile} />
+      <BrowserRouter>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/About">About</NavLink>
+        <NavLink to="/Contact">Contact</NavLink>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
