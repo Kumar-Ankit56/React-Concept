@@ -1,41 +1,33 @@
 /* eslint-disable react/prop-types */
-/* Use of ternary operator */
+/* Functional component with props */
 //import { useEffect, useState } from "react";
 import "./App.css";
-function DataMap() {
-  const isLoggedIn = false;
-  const profile = [
-    { Name: "Ak", skills: "FullStack Developer" },
-    {
-      Name: "PK",
-      skills: "Frontend Developer",
-    },
-  ];
-  console.log(profile);
+//Array of object
+const profile = [
+  { Name: "Ak", skills: "FullStack Developer" },
+  {
+    Name: "PK",
+    skills: "Frontend Developer",
+  },
+];
+function Home(props) {
+  console.log("Home function", props);
   return (
     <>
-      {isLoggedIn ? (
-        "Back"
-      ) : (
-        <>
-          {profile.map((data) => {
-            console.log(data);
-            (<p>{data.Name}</p>),
-              (
-                <div>
-                  <p>{data.skills}</p>
-                </div>
-              );
-          })}
-        </>
-      )}
+      {props.Userpropfile.map((student) => {
+        return (
+          <div key={student.key}>
+            <p>{student.Name}</p> <p>{student.skills}</p>
+          </div>
+        );
+      })}
     </>
   );
 }
 function App() {
   return (
     <>
-      <DataMap />
+      <Home Userpropfile={profile} />
     </>
   );
 }
