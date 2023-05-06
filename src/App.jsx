@@ -1,37 +1,26 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
-function Square() {
-  const [value, setvalue] = useState(null);
-  function handleClick() {
-    setvalue("X");
-  }
-  return (
-    <button onClick={handleClick} className="square">
-      {value}
-    </button>
-  );
-}
-
 function App() {
+  const [datalist, setdatalist] = useState(null);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((data) => setdatalist(data));
+  }, []);
   return (
     <>
-      <div className="boardrow">
-        <Square />
-        <Square />
-        <Square />
-      </div>
-      <div className="boardrow">
-        <Square />
-        <Square />
-        <Square />
-      </div>
-      <div className="boardrow">
-        <Square />
-        <Square />
-        <Square />
-      </div>
+      {datalist &&
+        datalist.map((obj) => {
+          return (
+            <ul key={obj.id}>
+              <li>{obj.id}</li>
+              <li>{obj.body}</li>
+              <li>{obj.title}</li>
+            </ul>
+          );
+        })}
     </>
   );
 }
