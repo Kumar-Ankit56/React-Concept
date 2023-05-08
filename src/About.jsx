@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-function About(props) {
-  return <>{props.name}</>;
-}
+function About(props) {}
 
 export default About;
