@@ -1,20 +1,16 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-//Copy text to clipboard
+import React, { useEffect, useState } from "react";
+//SetTimeout in react component using hook
 function App() {
-  var copytext1;
-  function copytext() {
-    copytext1 = document.getElementById("txt");
-    copytext1.select();
-    copytext1.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(copytext1.value);
-  }
+  const [hastime, sethastime] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      sethastime(true);
+    }, 5000);
+  });
   return (
     <>
-      <input type="text" id="txt" placeholder="Please Enter any dummy text" />
-      <button value={copytext1} onClick={copytext}>
-        CopyText
-      </button>
+      <p>{hastime ? "5 sec passed" : "5 sec has init duration"}</p>
     </>
   );
 }
