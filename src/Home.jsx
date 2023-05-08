@@ -3,11 +3,7 @@ function Home(props) {
     <>
       <h1>Home</h1>
       <h3>Name</h3>
-      <p>
-        {props.data.map((user) => {
-          return <>{user.Name}</>;
-        })}
-      </p>
+      <p style={props.style}>Ankit</p>
     </>
   );
 }
