@@ -6,26 +6,26 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Ankit",
-      company: "Centelli",
+      Monsters: [
+        {
+          name: "Linda",
+        },
+        {
+          name: "Rafel",
+        },
+        {
+          name: "Jacky",
+        },
+      ],
     };
   }
   render() {
     return (
       <>
         <h1 className="text-red-700 font-semibold">Hello world</h1>
-        <p className="ml-12 text-blue-500">
-          Hello {this.state.name} work at {this.state.company}
-        </p>
-        <button
-          className="ml-6 w-40 h-10 rounded bg-blue-300 text-white"
-          onClick={() => {
-            this.setState({company:"Microsoft"});
-            console.log(this.state);
-          }}
-        >
-          Click Me
-        </button>
+        {this.state.Monsters.map((Monster) => {
+           return <h2>{Monster.name}</h2>
+        })}
       </>
     );
   }
